@@ -1,0 +1,363 @@
+```
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background-color: var(--deep-ocean);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* スクロールアニメーション用 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ヒーローセクション */
+header {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(10, 37, 64, 0.85), rgba(0, 18, 32, 0.9)), url('[https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?auto=format&fit=crop&q=80&w=1920](https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?auto=format&fit=crop&q=80&w=1920)') no-repeat center center/cover;
+  padding: 0 20px;
+}
+
+.hero-container {
+  max-width: 800px;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--meat-red));
+  color: var(--deep-ocean);
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+header h1 {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  background: linear-gradient(to right, #FFF, #BCE7FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+}
+
+header p.tagline {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--text-light);
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+header p.tagline span {
+  color: var(--meat-red);
+  font-weight: bold;
+}
+
+.hero-info {
+  display: inline-flex;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1rem;
+}
+
+/* 各セクション共通 */
+section {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--accent-cyan);
+  border-radius: 2px;
+}
+
+/* 祭りの特徴 */
+#features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.features-text {
+  padding-right: 20px;
+}
+
+.features-text h3 {
+  font-size: 1.8rem;
+  color: var(--accent-cyan);
+  margin-bottom: 20px;
+}
+
+.features-text p {
+  margin-bottom: 20px;
+  color: #A0AEC0;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+.features-img-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.features-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.features-img-wrap:hover img {
+  transform: scale(1.05);
+}
+
+/* イベント・出し物 */
+#events {
+  background: radial-gradient(circle at center, var(--main-blue) 0%, var(--deep-ocean) 100%);
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.events-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.event-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 15px 30px rgba(0, 229, 255, 0.1);
+}
+
+.event-img {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+
+.event-info {
+  padding: 30px;
+}
+
+.event-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #FFF;
+}
+
+.event-info p {
+  color: #A0AEC0;
+  font-size: 0.95rem;
+}
+
+/* アクセス情報 */
+#access {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.access-info-block {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.access-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.access-table tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.access-table tr:last-child {
+  border-bottom: none;
+}
+
+.access-table th, .access-table td {
+  padding: 20px 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.access-table th {
+  width: 30%;
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.access-table td {
+  color: var(--text-light);
+}
+
+.access-map-mock {
+  background: linear-gradient(45deg, #1A202C, var(--main-blue));
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 20px;
+}
+
+.map-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* フッター */
+footer {
+  background-color: #000911;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.footer-sns {
+  margin-bottom: 30px;
+  color: var(--accent-cyan);
+  font-size: 1.1rem;
+}
+
+footer p.copy {
+  font-size: 0.85rem;
+  color: #4A5568;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 900px) {
+  #features, #access {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .features-text {
+    padding-right: 0;
+  }
+  header .hero-info {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+    display: inline-flex;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+```
+
+```
+  <!-- 出し物1 -->
+  <div class="event-card">
+    <div class="event-img" style="background-image: url('[https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&q=80&w=800](https://images.unsplash.com/photo-1534482421-64566f976cfa?auto=format&fit=crop&q=80&w=800)');"></div>
+    <div class="event-info">
+      <h3>豪快！至高の魚食エリア</h3>
+      <p>鮮度抜群の魚介類が全国から集結。刺身、焼き物、煮物など、若年層の舌を唸らせるモダンな魚料理を心ゆくまで堪能できます。</p>
+    </div>
+  </div>
+
+  <!-- 出し物2 -->
+  <div class="event-card">
+    <div class="event-img" style="background-image: url('[https://images.unsplash.com/photo-1508215885820-4585e56135c8?auto=format&fit=crop&q=80&w=800](https://images.unsplash.com/photo-1508215885820-4585e56135c8?auto=format&fit=crop&q=80&w=800)');"></div>
+    <div class="event-info">
+      <h3>スーパーボール掬い</h3>
+      <p>お祭りの定番アトラクション。蒼色にきらめく水面から、お気に入りのスーパーボールを巧みに掬い上げよう！大人も子供も夢中になれる時間です。</p>
+    </div>
+  </div>
+
+  <!-- 出し物3 -->
+  <div class="event-card">
+    <div class="event-img" style="background-image: url('[https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=800](https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=800)');"></div>
+    <div class="event-info">
+      <h3>伝統の継承・牛喰らい処</h3>
+      <p>主役の座は譲っても、その美味さは健在。明治文明開化の味を再現した牛鍋や、ジューシーな肉料理がガツンと胃袋を満たします。</p>
+    </div>
+  </div>
+
+</div>
+
+```
